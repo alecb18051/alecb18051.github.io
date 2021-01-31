@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 * {box-sizing: border-box}
   body {
@@ -103,15 +104,13 @@
     cursor: pointer;
   }
 </style>
-  
-  </head>
-  <body>
-    
-  <h1>HackCARES: Helping Yourself</h1>
-  <p>Self-care describes the conscious effort of promoting one's own physical, social, emotional, mental, and spiritual health through self-loving actions.</p>
- 
-  <div class="slideshow-container">
+</head>
+<body>
 
+<h1>HackCARES: Helping Yourself</h1>
+<p>Self-care describes the conscious effort of promoting one's own physical, social, emotional, mental, and spiritual health through self-loving actions.</p>
+
+<div class="slideshow-container">
   <div class="quoteSlides">
     <q>The more you work on yourself personally, the more you can work on yourself professsionally.</q>
     <p class="author">- Sarah King</p>
@@ -129,51 +128,50 @@
 
   <a class="prev" onclick="plusSlides(-1)">❮</a>
   <a class="next" onclick="plusSlides(1)">❯</a>
+</div>
 
-  </div>
+<div class="dot-container">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>  
 
-  <div class="dot-container">
-    <span class="dot" onclick="currentSlide(1)"></span> 
-    <span class="dot" onclick="currentSlide(2)"></span> 
-    <span class="dot" onclick="currentSlide(3)"></span> 
-  </div>  
-    
-  <script>
-  var slideIndex = 1;
-  showSlides(slideIndex);
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
 
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+
+  if (n > slides.length) {
+      slideIndex = 1
+  }    
+  else if (n < 1) {
+      slideIndex = slides.length
   }
 
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
   }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    
-    if (n > slides.length) {
-        slideIndex = 1
-    }    
-    else if (n < 1) {
-        slideIndex = slides.length
-    }
-    
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
   }
-  </script>
-    
-  </body>
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
 
-  <button class = "button button1"> Happy! </button>
+</body>
+
+<button class = "button button1"> Happy! </button>
 </html>
